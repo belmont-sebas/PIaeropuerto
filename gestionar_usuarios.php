@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Crear Usuario</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet"  href="styles.css">
 </head>
 <body>
     <div>
@@ -48,6 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select><br>
             <input type="submit" value="Crear Usuario">
         </form>
+        <br>
+        <a href="menu.php">
+            <button>Regresar</button>
+        </a>
     </div>
 </body>
 </html>

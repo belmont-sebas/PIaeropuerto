@@ -35,22 +35,24 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
-  padding: 8px;
+input[type="password"],
+button {
+  padding: 10px; /* Modificado para que los botones tengan el mismo relleno */
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-input[type="submit"] {
+input[type="submit"],
+button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px;
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button:hover {
   background-color: #0056b3;
 }
 
@@ -66,4 +68,15 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+a.button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
 }
