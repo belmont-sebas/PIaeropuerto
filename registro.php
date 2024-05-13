@@ -1,7 +1,6 @@
 <?php
-session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   include'conec.php';
+  include'conec.php';
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -9,21 +8,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error al conectar: " . $conn->connect_error);
     }
 
-
+    $nombre = $_POST['nombre'];
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
+    $rol = 'Pasajero'; // Por defecto se registra como Pasajero
 
-    $sql = "SELECT id, nombre, rol FROM Usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
-    $result = $conn->query($sql);
+    $sql = "INSERT INTO Usuarios (nombre, correo, contrasena, rol) VALUES ('$nombre', '$correo', '$contrasena', '$rol')";
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['nombre'] = $row['nombre'];
-        $_SESSION['rol'] = $row['rol'];
-        header("Location: menu.php");
+    if ($conn->query($sql) === TRUE) {
+        echo "Registro exitoso. Ahora puedes iniciar sesión.";
     } else {
-        echo "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
+        echo "Error al registrar: " . $conn->error;
     }
 
     $conn->close();
@@ -33,21 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Iniciar Sesión</title>
+    <title>Registro</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
+    <h2>Registro</h2>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
         <label for="correo">Correo:</label><br>
         <input type="text" id="correo" name="correo"><br>
         <label for="contrasena">Contraseña:</label><br>
         <input type="password" id="contrasena" name="contrasena"><br><br>
-        <input type="submit" value="Iniciar Sesión">
+        <input type="submit" value="Registrarse">
     </form>
-    <br>
-    <a href="registro.php">
-        <button>Registrarse</button>
-    </a>
+    <a href="index.php">
+        <button>Iniciar secion </button>
 </body>
 </html>
