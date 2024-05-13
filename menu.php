@@ -8,6 +8,7 @@ if (!isset($_SESSION['id'])) {
 
 $rol = $_SESSION['rol'];
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@ $rol = $_SESSION['rol'];
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div>
         <h2>Bienvenido, <?php echo $_SESSION['nombre']; ?></h2>
         <h3>Menú</h3>
         <ul>
@@ -27,16 +28,6 @@ $rol = $_SESSION['rol'];
             <li><a href="perfil.php">Ver Perfil</a></li>
             <li><a href="index.php">Cerrar Sesión</a></li>
         </ul>
-        <?php if ($rol == 'Administrador') { ?>
-            <div class="admin-options">
-                <h3>Opciones de Administrador</h3>
-                <ul>
-                    <li><a href="crear_vuelo.php">Crear Vuelo</a></li>
-                    <li><a href="gestionar_usuarios.php">Gestionar Usuarios</a></li>
-                </ul>
-            </div>
-        <?php } ?>
     </div>
 </body>
 </html>
-
