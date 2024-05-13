@@ -32,17 +32,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <div>
     <h2>Registro</h2>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"><br>
         <label for="correo">Correo:</label><br>
-        <input type="text" id="correo" name="correo"><br>
+        <input type="text" id="correo" name="correo" placeholder="Ingrese su correo electrónico"><br>
         <label for="contrasena">Contraseña:</label><br>
-        <input type="password" id="contrasena" name="contrasena"><br><br>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña"><br><br>
         <input type="submit" value="Registrarse">
+        <p>¿ya tienes una cuenta? <a href="index.php">Iniciar Sesión</a></p>
     </form>
-    <a href="index.php">
-        <button>Iniciar secion </button>
+    </div>
 </body>
 </html>

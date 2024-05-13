@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,47 +45,46 @@ $result = $conn->query($sql);
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h2>Consulta de Vuelos</h2>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="fecha">Consultar vuelos para la fecha:</label>
-        <input type="date" id="fecha" name="fecha">
-        <br>
-        <label for="origen">Ciudad de origen:</label>
-        <input type="text" id="origen" name="origen">
-        <br>
-        <label for="destino">Ciudad de destino:</label>
-        <input type="text" id="destino" name="destino">
-        <br>
-        <input type="submit" value="Consultar">
-    </form>
-    <br>
-    <table>
-        <tr>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Origen</th>
-            <th>Destino</th>
-            <th>Acciones</th>
-        </tr>
-        <?php
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row['fecha'] . "</td>";
-                echo "<td>" . $row['hora'] . "</td>";
-                echo "<td>" . $row['origen'] . "</td>";
-                echo "<td>" . $row['destino'] . "</td>";
-                echo "<td><a href='comprar_vuelo.php?vuelo_id=" . $row['id'] . "'>Comprar</a></td>";
-                echo "</tr>";
+    <div class="container">
+        <h2>Consulta de Vuelos</h2>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <label for="fecha">Consultar vuelos para la fecha:</label>
+            <input type="date" id="fecha" name="fecha">
+            <label for="origen">Ciudad de origen:</label>
+            <input type="text" id="origen" name="origen">
+            <label for="destino">Ciudad de destino:</label>
+            <input type="text" id="destino" name="destino">
+            <input type="submit" value="Consultar">
+        </form>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Acciones</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['fecha'] . "</td>";
+                    echo "<td>" . $row['hora'] . "</td>";
+                    echo "<td>" . $row['origen'] . "</td>";
+                    echo "<td>" . $row['destino'] . "</td>";
+                    echo "<td><a href='comprar_vuelo.php?vuelo_id=" . $row['id'] . "'>Comprar</a></td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>No se encontraron vuelos disponibles para los criterios seleccionados.</td></tr>";
             }
-        } else {
-            echo "<tr><td colspan='5'>No se encontraron vuelos disponibles para los criterios seleccionados.</td></tr>";
-        }
-        ?>
-    </table>
-    <br>
-    <a href="menu.php">
-        <button>Regresar</button>
-    </a>
+            ?>
+        </table>
+        <br>
+        <a href="menu.php">
+            <button>Regresar</button>
+        </a>
+    </div>
 </body>
 </html>
+
