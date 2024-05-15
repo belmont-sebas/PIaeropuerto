@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Crear Usuario</title>
-    <link rel="stylesheet"  href="styles.css">
+    <link rel="stylesheet"  href="estilos.css">
 </head>
 <body>
-    <div>
+    <div class="container">
         <h2>Crear Nuevo Usuario</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="nombre">Nombre:</label>

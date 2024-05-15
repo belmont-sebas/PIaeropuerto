@@ -18,7 +18,7 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Detalles del Vuelo</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
     <div class="container">

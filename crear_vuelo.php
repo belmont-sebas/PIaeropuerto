@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error al conectar: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO Vuelos (fecha, hora, piloto, avion, origen, destino) VALUES ('$fecha', '$hora', '$piloto', '$avion', '$origen', '$destino')";
+    $sql = "INSERT INTO Vuelos (fecha, hora, piloto_id, avion_id, origen, destino) VALUES ('$fecha', '$hora', '$piloto', '$avion', '$origen', '$destino')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Vuelo creado exitosamente.";
@@ -31,10 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Crear Vuelo</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
-    <div>
+    <div class="container">
         <h2>Crear Nuevo Vuelo</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="fecha">Fecha:</label>
@@ -51,6 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="destino" name="destino" required><br>
             <input type="submit" value="Crear Vuelo">
         </form>
+        <a href="menu.php">
+            <button>Regresar</button>
+        </a>
     </div>
 </body>
 </html>

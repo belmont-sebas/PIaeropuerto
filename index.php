@@ -9,19 +9,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("Error al conectar: " . $conn->connect_error);
   }
 
-
   $correo = $_POST['correo'];
   $contrasena = $_POST['contrasena'];
 
-  $sql = "SELECT id, nombre, rol FROM Usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
+  $sql = "SELECT id, nombre, rol, contrasena FROM Usuarios WHERE correo = '$correo'";
   $result = $conn->query($sql);
 
   if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['nombre'] = $row['nombre'];
-    $_SESSION['rol'] = $row['rol'];
-    header("Location: menu.php");
+    $hashed_password = $row['contrasena'];
+
+    if (password_verify($contrasena, $hashed_password)) {
+      $_SESSION['id'] = $row['id'];
+      $_SESSION['nombre'] = $row['nombre'];
+      $_SESSION['rol'] = $row['rol'];
+      header("Location: menu.php");
+    } else {
+      echo "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
+    }
   } else {
     echo "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
   }
@@ -30,11 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Iniciar Sesión</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
   <div>

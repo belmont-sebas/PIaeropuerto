@@ -49,10 +49,10 @@ $usuario = $result->fetch_assoc();
 <html>
 <head>
     <title>Editar Perfil</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
-    <div>
+    <div class="container">
         <h2>Editar Perfil</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="nombre">Nombre:</label>
@@ -65,6 +65,9 @@ $usuario = $result->fetch_assoc();
             <input type="password" id="nueva_contrasena" name="nueva_contrasena"><br>
             <input type="submit" value="Actualizar Perfil">
         </form>
+        <a href="menu.php">
+            <button>Regresar</button>
+        </a>
     </div>
 </body>
 </html>
