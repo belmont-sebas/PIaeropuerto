@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
 
 include 'conec.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Error al conectar: " . $conn->connect_error);
@@ -46,7 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="sede">Sede:</label>
             <input type="text" id="sede" name="sede" required><br>
             <input type="submit" value="Crear Aerolínea">
-        </form>      
+        </form>   
+        <a href="menu.php">
+            <button>Regresar</button>
+        </a>   
     </div>
+   
 </body>
 </html>
