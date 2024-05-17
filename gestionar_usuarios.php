@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Crear Usuario</title>
-    <link rel="stylesheet"  href="estilos.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
     <div class="container">

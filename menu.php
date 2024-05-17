@@ -53,6 +53,7 @@ $result = $conn->query($sql);
         <?php if ($_SESSION['rol'] == 'Administrador') { ?>
             <a class="espaciado" href="crear_vuelo.php">Crear Vuelo</a>
             <a class="espaciado" href="gestionar_usuarios.php">Gestionar Usuarios</a>
+            <a class="espaciado" href="aerolineas.php">Aerolineas</a>
         <?php } ?>
         <a class="espaciado" href="perfil.php">Ver Perfil</a>
         <a class="espaciado" href="index.php">Cerrar Sesión</a>

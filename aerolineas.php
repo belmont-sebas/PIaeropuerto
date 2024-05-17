@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Gestión de Aerolíneas</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 <body>
     <div>
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="sede">Sede:</label>
             <input type="text" id="sede" name="sede" required><br>
             <input type="submit" value="Crear Aerolínea">
-        </form>
+        </form>      
     </div>
 </body>
 </html>
