@@ -1,6 +1,9 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-image: url('img/fondo.jpg');
+  background-size: 100% auto;
+  background-position: top center; 
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   display: flex;
@@ -8,12 +11,12 @@ body {
   align-items: center;
   height: 100vh;
 }
-
 .container {
   max-width: 600px;
   width: 100%;
   padding: 20px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
@@ -32,15 +35,22 @@ form {
 
 label {
   margin-bottom: 5px;
-  color: #555;
+  color: #000000;
+  
 }
-input[type="email"]
+input[type="date"],
+input[type="time"],
+input[type="email"],
 input[type="text"],
 input[type="password"] {
-  padding: 8px;
-  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.0);
+  
 }
 
 input[type="submit"]{
@@ -89,24 +99,11 @@ button{
 button:hover {
   background-color: #007bff;
 }
-
-.navbar {
-  background-color: #007bffbb;
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.253);
 }
 
 table, th, td {
@@ -121,9 +118,7 @@ th, td {
 form {
   margin-top: 20px;
 }
-
 input[type="date"],
-input[type="text"],
 input[type="submit"] {
   margin: 5px;
   padding: 8px;
@@ -132,5 +127,30 @@ input[type="submit"] {
   padding-left: 8px;
   padding-right: 8px;
   color: black;
+}
+.password-container {
+  position: relative;
+}
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.toggle-password img {
+  width: 20px; 
+  height: 20px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+select{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.0);
 }
 

@@ -46,19 +46,22 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Menú y Consulta de Vuelos</title>
+    <link rel="stylesheet" type="text/css" href="menu.css">
     <link rel="stylesheet" type="text/css" href="estilos.css">
     </head>
-<body>
+<body class="menu">
     <div class="navbar">
-        <?php if ($_SESSION['rol'] == 'Administrador') { ?>
-            <a class="espaciado" href="crear_vuelo.php">Crear Vuelo</a>
-            <a class="espaciado" href="gestionar_usuarios.php">Gestionar Usuarios</a>
-            <a class="espaciado" href="aerolineas.php">Aerolineas</a>
-        <?php } ?>
-        <a class="espaciado" href="perfil.php">Ver Perfil</a>
-        <a class="espaciado" href="index.php">Cerrar Sesión</a>
-    </div>
+        <ul>
+            <?php if ($_SESSION['rol'] == 'Administrador') { ?>
+            <li><a  href="crear_vuelo.php">Vuelos</a></li>
+            <li><a href="gestionar_usuarios.php">Usuarios</a></li>
+            <li> <a  href="aerolineas.php">Aerolineas</a></li>
+            <?php } ?>
+            <li><a href="perfil.php">Perfil</a></li>
+            <li><a href="index.php">Salir</a></li>
 
+        </ul>         
+    </div>
     <div class="container">
         <h2>Consulta de Vuelos</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
