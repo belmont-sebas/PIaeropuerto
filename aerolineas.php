@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['id'])) {
@@ -23,15 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nit = $_POST['nit'];
     $rol = 'Administrador';
 
-    $sql = "INSERT INTO aerolineas (nombre, sede) VALUES ('$nombre', '$sede', '$nit')";  
-
-    $sql_check = "SELECT id FROM aerolineas WHERE nit = '$nit'";
+    $sql_check = "SELECT nit FROM aerolineas WHERE nit = '$nit'";
     $result_check = $conn->query($sql_check);
     
     if ($result_check->num_rows > 0) {
         echo "Ya existe una aerolínea con ese NIT.";
     } else {
-        // Insertar los datos en la base de datos
         $sql_insert = "INSERT INTO aerolineas (nombre, sede, nit) VALUES ('$nombre', '$sede', '$nit')";
         
         if ($conn->query($sql_insert) === TRUE) {
@@ -40,32 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error al crear aerolínea: " . $conn->error;
         }
     }
-    
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Aerolínea creada exitosamente.";
-    } else {
-        echo "Error al crear aerolínea: " . $conn->error;
-    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Gestión de Aerolíneas</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
-    <style>
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-container img {
-            max-width: 200px; /* Ajusta el tamaño máximo del logo según sea necesario */
-            height: auto;
-        }
-    </style>
 </head>
 <body>
     <div class="container">

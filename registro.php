@@ -3,70 +3,13 @@
 <head>
     <title>Registro</title>
     <link rel="stylesheet"  href="estilos.css" type="text/css">
-    <script>
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("contrasena");
-            var confirmPasswordInput = document.getElementById("confirmar_contrasena");
-            var passwordType = passwordInput.type;
-            var confirmPasswordType = confirmPasswordInput.type;
-
-            if (passwordType === "password") {
-                passwordInput.type = "text";
-                confirmPasswordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-                confirmPasswordInput.type = "password";
-            }
-        }
-
-        
-
-        function validateForm() {
-            var nombre = document.getElementById("nombre").value.trim();
-            var correo = document.getElementById("correo").value.trim();
-            var contrasena = document.getElementById("contrasena").value.trim();
-            var confirmar_contrasena = document.getElementById("confirmar_contrasena").value.trim();
-
-            var errorMessage = "";
-
-            if (nombre === "") {
-                errorMessage += "Por favor, ingrese su nombre.\n";
-            }
-
-            if (correo === "") {
-                errorMessage += "Por favor, ingrese su correo electrónico.\n";
-            } else if (!validateEmail(correo)) {
-                errorMessage += "Por favor, ingrese un correo electrónico válido.\n";
-            }
-
-            if (contrasena === "") {
-                errorMessage += "Por favor, ingrese una contraseña.\n";
-            }
-
-            if (confirmar_contrasena === "") {
-                errorMessage += "Por favor, confirme su contraseña.\n";
-            }
-
-            if (errorMessage !== "") {
-                alert(errorMessage);
-                return false;
-            }
-
-            return true;
-        }
-
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-    </script>
+    <script src="js/funciones.js"></script>
 </head>
 <body>
 <div class="container">
-        <div class="logo-container">
-            <img src="img/log.png" alt="Logo de la aerolínea"> <!-- Aquí se enlaza el log.png -->
-        </div>
-        
+    <div class="logo-container">
+         <img src="img/log.png" alt="Logo de la aerolínea"> 
+    </div>
     <div>
     <h2>Registro</h2>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validateForm()">
@@ -74,28 +17,24 @@
         <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required><br>
         <label for="correo">Correo:</label><br>
         <input type="text" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required><br>
-        <label for="contrasena">Contraseña:</label><br>
-        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required><br>
-        <label for="confirmar_contrasena">Confirmar Contraseña:</label><br>
-        <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirme su contraseña" required>
-        <p> Mostrar contraseña</p>
-        <input type="checkbox" onclick="togglePasswordVisibility()"><br><br>
-        <input type="submit" value="Registrarse">
+        <div class="password-container">  
+                <label for="contrasena">Contraseña:</label><br>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña">
+                <span class="toggle-password" onclick="togglePasswordVisibility('contrasena')">
+                <img src="img/ojo.png" alt="Mostrar/Ocultar contraseña"> 
+                </span>
+        </div>
+        <div class="password-container">  
+            <label for="confirmar_contrasena">Confirmar Contraseña:</label><br>
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirme su contraseña" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility('confirmar_contrasena')">
+            <img src="img/ojo.png" alt="Mostrar/Ocultar contraseña"> 
+            </span>
+        </div>
+            <input type="submit" value="Registrarse">
         <p>¿ya tienes una cuenta? <a href="index.php">Iniciar Sesión</a></p>
     </form>
     </div>
-
-    <style>
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-container img {
-            max-width: 200px; /* Ajusta el tamaño máximo del logo según sea necesario */
-            height: auto;
-        }
-
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include'conec.php';

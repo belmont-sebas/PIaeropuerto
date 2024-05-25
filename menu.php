@@ -56,12 +56,15 @@ $result = $conn->query($sql);
             <li><a  href="crear_vuelo.php">Vuelos</a></li>
             <li><a href="gestionar_usuarios.php">Usuarios</a></li>
             <li> <a  href="aerolineas.php">Aerolineas</a></li>
+            <li> <a  href="pilotos.php">Pilotos</a></li>
+            <li> <a  href="aviones.php">Aviones</a></li>
             <?php } ?>
             <li><a href="perfil.php">Perfil</a></li>
             <li><a href="index.php">Salir</a></li>
 
         </ul>         
     </div>
+
     <div class="container">
         <h2>Consulta de Vuelos</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
